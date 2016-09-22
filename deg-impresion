@@ -1,0 +1,32 @@
+declare
+	xidproy varchar2(25);
+	xdescripcion varchar2(150);
+	xdocente varchar2(70);
+	xnrojurados number;
+	xnota_max number;
+	xnota_min number;
+	xnota_promedio number;
+	xnro_est_masculino number;
+	xnro_est_femenino number;
+	xubicacion varchar2(100);
+	xnrostand number;
+begin
+
+xidproy := '06TIM';
+ficha_proyecto(xidproy,xdescripcion, xdocente, xnrojurados, xnota_max, xnota_min, xnota_promedio,xnro_est_masculino,xnro_est_femenino,xubicacion,xnrostand);
+dbms_output.put_line('                 FICHA DE PROYECTO');
+dbms_output.put_line('====================================================');
+dbms_output.put_line('IdProy:            ' || xidproy);
+dbms_output.put_line('Titulo:            ' || xdescripcion);
+dbms_output.put_line('Responsable:       ' || xdocente);
+dbms_output.put_line('CALIFICACION');
+dbms_output.put_line('     Numero de jurados que calificaron:   ' || xnrojurados);
+dbms_output.put_line('     Nota maxima:                         ' || xnota_max);
+dbms_output.put_line('     Nota minima:                         ' || xnota_min);
+dbms_output.put_line('     Nota promedio:                       ' || xnota_promedio);
+dbms_output.put_line('PARTICIPANTES');
+dbms_output.put_line('     Nro. estudiantes varones:            ' || xnro_est_masculino);
+dbms_output.put_line('     Nro. estudiantes muejers:            ' || xnro_est_femenino);
+dbms_output.put_line('UBICACION');
+dbms_output.put_line('     ' || xubicacion || '    Stand: ' || xnrostand);
+end;
