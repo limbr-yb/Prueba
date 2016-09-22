@@ -25,31 +25,3 @@ begin
 	select nrostand into xnrostand from proyecto where idproy=xidproy;
 end;
 
-***************
-
-declare
-	xidproy in varchar2;
-	xdescripcion out varchar2;
-	xdocente out varchar2;
-	xnrojurados out number;
-	xnota_max out number;
-	xnota_min out number;
-	xnota_promedio out number;
-	xnro_est_masculino out number;
-	xnro_est_femenino out number;
-	xubicacion out varchar2;
-	xnrostand out number;
-begin
-
-xidproy := '06TIM'
-ficha_proyecto(xidproy,
-			xdescripcion, 
-			xdocente, 
-			xnrojurados, 
-			xnota_max, 
-			xnota_min, 
-			xnota_promedio,
-			xnro_est_masculino,
-			xnro_est_femenino,
-			xubicacion,
-			xnrostand);
