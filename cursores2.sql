@@ -5,9 +5,9 @@ Declare
 		from libro l, almacen a
 		where l.nroalmacen=a.nroalmacen
 		order by l.titulo;
-	xtitulo varchar2(75);
+	xtitulo varchar(75);
 	xnroalmacen number;
-	xdireccion varchar2(50);
+	xdireccion varchar(50);
 	xstock number;
 Begin
 	xnro :=1;
