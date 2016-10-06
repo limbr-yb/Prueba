@@ -42,3 +42,19 @@ BEGIN
 		sysdate
 	);
 END;
+
+**********************************
+
+update cliente
+set nombre = 'Evelyns'
+where codcliente=1001;
+
+***************
+
+update cliente
+set direccion = 'Av. EEUU #55'
+where codcliente=1010;
+
+*****************
+
+select * from histo_cliente
