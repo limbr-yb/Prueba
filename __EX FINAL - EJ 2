@@ -1,0 +1,37 @@
+Declare
+	Cursor c_docentes Is
+	 select pr.idproy,  (p.apellido||' '||p.nombre) responsable
+	 from proyecto pr, persona p
+	 where pr.docresp=p.codigo;
+	xidproy varchar(25);
+	xresponsable varchar(71);
+	Cursor c_estudiantes Is
+	 select (pe.apellido||' '||pe.nombre) estudiante
+	 from estudiante e, persona pe
+	 where e.codigo=pe.codigo and e.idproy=xidproy;
+	xdescripcion varchar(150);
+	xestudiante varchar(71);
+	xnro number;
+begin
+    dbms_output.put_line('               LISTA DE DOCENTES RESPONSABLES');
+    dbms_output.put_line('=======================================================');
+	open c_docentes;
+	Loop
+	 fetch c_docentes into xidproy, xresponsable;
+	 Exit WHEN c_docentes%NOTFOUND;
+	 select descripcion into xdescripcion from proyecto where idproy=xidproy;
+	 dbms_output.put_line('DOCENTE:    '||xresponsable);
+     dbms_output.put_line('Proyecto:   '||xdescripcion);
+	 dbms_output.put_line('        Estudiantes participantes   ');
+	 xnro := 1;
+	 open c_estudiantes;
+	 Loop
+	   fetch c_estudiantes into xestudiante;
+	   Exit when c_estudiantes%NOTFOUND;
+	   dbms_output.put_line('            '||xnro||'  '||xestudiante);
+	   xnro:=xnro+1;
+	 end loop;
+	 close c_estudiantes;
+	End Loop;
+	Close c_docentes;
+End;
